@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DiamondGym - Gimnasio en Linares, Jaén. Fitness & Bodybuilding de alto rendimiento.">
+	<meta name="robots" content="index, follow">
+  
+    <!-- Título -->
+    <title>DiamondGym - Gimnasio en Linares</title>
+    <link rel="canonical" href="https://diamondgymlinares.es/" />
+
+    <link rel="icon" type="image/png" href="Logo-vector.png">
+    <!-- Favicon para todos los navegadores -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://diamondgymlinares.es/Logo-vector.png" type="image/png">
+  	<link rel="sitemap" type="application/xml" href="https://diamondgymlinares.es/sitemap.xml">
+
+
+    <!-- Favicon para dispositivos Apple (iOS) -->
+    <link rel="apple-touch-icon" href="Logo-vector.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Gym",
+      "name": "DiamondGym",
+      "url": "https://diamondgymlinares.es",
+      "logo": "https://diamondgymlinares.es/Logo-vector.png",
+      "image": "https://diamondgymlinares.es/Logo-vector.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C/ Úbeda S/N",
+        "addressLocality": "Linares",
+        "addressRegion": "Jaén",
+        "addressCountry": "ES"
+      }
+    }
+    </script>
+
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS para el mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Hoja de estilos personalizada -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script> window.chtlConfig = { chatbotId: "6211612239" } </script>
+    <script async data-id="6211612239" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+
+    <!-- ESTILOS DEL BANNER DE COOKIES (RESPONSIVE) -->
+
+<style>
+    #cookie-banner-final {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
+        border-top: 1px solid #333;
+        font-family: 'Montserrat', sans-serif;
+        
+        /* Z-INDEX MÁXIMO: Para estar encima del chat y que el clic funcione */
+        z-index: 2147483647 !important; 
+        
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        box-sizing: border-box;
+    }
+
+    .cookie-text {
+        font-size: 0.9rem;
+        max-width: 600px;
+        line-height: 1.4;
+    }
+
+    .cookie-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    /* ESTILO BOTONES AMARILLOS */
+    .btn-cookie {
+        padding: 10px 25px;
+        font-weight: 800;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    /* Botón ACEPTAR (Sólido) */
+    #btn-accept {
+        background-color: #d0ff00;
+        color: #000000;
+        border: 2px solid #d0ff00;
+    }
+    #btn-accept:hover {
+        background-color: #b3db00;
+    }
+
+    /* Botón RECHAZAR (Borde) */
+    #btn-reject {
+        background-color: transparent;
+        color: #d0ff00;
+        border: 2px solid #d0ff00;
+    }
+    #btn-reject:hover {
+        background-color: rgba(208, 255, 0, 0.1);
+    }
+
+    .cookie-link {
+        color: #888;
+        font-size: 0.8rem;
+        text-decoration: underline;
+        margin-left: 5px;
+    }
+
+    /* RESPONSIVE MÓVIL */
+    @media (max-width: 768px) {
+        #cookie-banner-final {
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 30px; /* Espacio extra para no chocar con bordes */
+        }
+
+        .cookie-buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .btn-cookie {
+            width: 100%; /* Botón ocupa todo el ancho */
+            padding: 15px; /* Más fácil de pulsar con el dedo */
+            font-size: 1rem;
+        }
+
+        .cookie-link {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+        }
+    }
+</style>
+
+<div id="cookie-banner-final">
+    <div class="cookie-text">
+        Usamos cookies para mejorar tu experiencia. 
+        Puedes <strong>aceptar</strong> o <strong>rechazar</strong> su uso.
+    </div>
+    
+    <div class="cookie-buttons">
+        <button id="btn-accept" class="btn-cookie">ACEPTAR</button>
+        <button id="btn-reject" class="btn-cookie">RECHAZAR</button>
+    </div>
+
+    <a href="./aviso-legal.html" class="cookie-link">Más info</a>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const banner = document.getElementById('cookie-banner-final');
+        const btnAccept = document.getElementById('btn-accept');
+        const btnReject = document.getElementById('btn-reject');
+
+        // 1. Comprobar si ya aceptó/rechazó antes
+        if (localStorage.getItem('cookie-consent')) {
+            banner.style.display = 'none'; // Si ya hay dato, ocultar directo
+        }
+
+        // 2. Función para cerrar
+        function cerrarBanner(decision) {
+            localStorage.setItem('cookie-consent', decision);
+            banner.style.display = 'none'; // Ocultar visualmente
+        }
+
+        // 3. Eventos de Clic
+        if(btnAccept) {
+            btnAccept.addEventListener('click', function() {
+                cerrarBanner('accepted');
+            });
+        }
+
+        if(btnReject) {
+            btnReject.addEventListener('click', function() {
+                cerrarBanner('rejected');
+            });
+        }
+    });
+</script>
+</head>
+
+<body>
+    <!-- Elemento para el cursor personalizado -->
+   <!-- CURSOR PERSONALIZADO -->
+<div class="gym-cursor" id="cursor"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="contenedormenu navegacion-flex">
+            <!-- Logo -->
+            <a href="#" class="logo-link">
+                <img src="./img/Logo-vector.png" alt="Diamond Gym Logo" class="logotipo" width="35px">
+            </a>
+
+            <!-- Botón menu solo pa móvil -->
+            <div class="hamburger" id="hamburger-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <!-- Menú de Navegación -->
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#instalaciones" class="nav-link">Instalaciones</a></li>
+                    <li><a href="#opiniones" class="nav-link">Opiniones</a></li>
+                    <li><a href="#precios" class="nav-link">Precios</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="./dropdown-menu/quienes-somos.html" class="boton nav-link" style="margin-top: 0; padding: 10px 20px; font-size: 0.75rem;"><span>Quienes somos</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="seccion-inicio">
+        <!-- VIDEO DE FONDO -->
+        <video autoplay muted loop playsinline class="video-fondo">
+            <source src="./img/video-header.mp4" type="video/mp4">
+            <!-- Imagen de respaldo -->
+            <img src="./img/musculacion.png" alt="Gym Background">
+        </video>
+        <div class="overlay-oscuro"></div>
+
+        <div class="contenedor revelar-al-scroll">
+            <span class="subtitle">New Era of Gym</span>
+            <h1>DIAMOND<span style="color: var(--primary);">GYM</span></h1>
+            <p>Fitness & Bodybuilding <br>LA PRESIÓN CREA DIAMANTES.</p>
+            
+            <a href="#precios" class="boton"><span>Ver Planes</span></a>
+            <a href="#asesoramiento" class="boton boton-outline" style="margin-left: 15px;">
+                <span>Saber más</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ASESORAMIENTO -->
+    <section id="asesoramiento" class="padding-seccion asesoramiento">
+        <div class="contenedor">
+            <div class="grid-asesoramiento">
+                <div class="contenido-asesoramiento revelar-al-scroll">
+                    <h2>DIAMOND <span style="color: var(--primary);">GYM</span></h2>
+                    <p class="texto-asesoramiento">
+                        En Diamond Gym entendemos que entrenar no es solo una rutina:<strong> es un estilo de vida</strong>.<br> Por eso, hemos creado un espacio pensado para quienes buscan rendimiento, bienestar y calidad al mejor precio y sin compromisos.
+                        Contamos con nueva maquinaria, seleccionada para ofrecer precisión y confort en cada entrenamiento. Nuestro ambiente combina diseño moderno, iluminación inspiradora y una selección musical que potencia tu enfoque y motivación.
+                        <br><br>
+                        Descubre una nueva forma de entrenar. En Diamond Gym, cada detalle está pensado para que te superes, te sientas bien y disfrutes del camino hacia tu mejor versión.
+                    </p>
+                    
+                    <div class="botoninfo">
+                        <span><strong>DIRECCION:</strong> <br>C/ Úbeda S/N (Final calle) <br> 23700, Linares (Jaén)</span>
+                    </div>
+                    
+                    <div class="botoninfo">
+                        <span><strong>HORARIO:</strong> <br>Lun–Vie: 8:00–22:30 | Sáb: 9:00–13:30 <BR>Dom: Cerrado</span>
+                    </div>
+                </div>
+        
+                <div class="imagen-asesoramiento revelar-al-scroll">
+                    <img src="./img/bannereslogan2.png ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FRANJA DE LOGOS (MARQUEE) -->
+    <div class="marquesina-marcas">
+        <div class="pista-marquesina">
+            <div class="elemento-marquesina"><img src="img/dg-logo.png"></div>
+            <div class="elemento-marquesina"><img src="img/iogenix-logo.png"></div>
+            <div class="elemento-marquesina"><img src="img/LOGO-AMIX.png"></div>
+            <div class="elemento-marquesina"><img src="img/LOGO-MAQUINARIA.png"></div>
+             <div class="elemento-marquesina"><img src="img/dg-logo.png"></div>
+            <div class="elemento-marquesina"><img src="img/iogenix-logo.png"></div>
+            <div class="elemento-marquesina"><img src="img/LOGO-AMIX.png"></div>
+            <div class="elemento-marquesina"><img src="img/LOGO-MAQUINARIA.png"></div>
+            <div class="elemento-marquesina"><img src="img/dg-logo.png"></div>
+            <div class="elemento-marquesina"><img src="img/iogenix-logo.png"></div>
+            <div class="elemento-marquesina"><img src="img/LOGO-AMIX.png"></div>
+            <div class="elemento-marquesina"><img src="img/LOGO-MAQUINARIA.png"></div>
+        </div>
+    </div>
+    
+    <!-- GALERÍA DE IMÁGENES -->
+    <section id="instalaciones" class="padding-seccion seccion-galeria">
+        <div class="contenedor texto-centro revelar-al-scroll" style="margin-bottom: 40px;">
+            <span class="subtitle">NUESTRO ESPACIO</span>
+            <h2>ZONAS DE <span style="color: var(--primary);">ENTRENAMIENTO</span></h2>
+            <img src="./img/desliza.gif" style="display: block; margin: 0 auto; width: 50px;">
+        </div>
+        <div class="contenedor-slider-wrapper">
+            <!-- Flecha Izquierda -->
+            <button class="flecha-btn izquierda" id="flechaIzq">&#10094;</button>
+
+            <!-- INICIO DE LA ZONA QUE SE MUEVE -->
+            <div class="galeria-desplazable revelar-al-scroll"> 
+                <div class="elemento-galeria">
+                    <img src="./img/ambiente.png" alt="Zona Peso Libre">
+                    <div class="pie-galeria">ZONA PESO LIBRE</div>
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/musculacion.png" alt="Zona Cardio">
+                    <div class="pie-galeria">CARDIO & RESISTENCIA</div>
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/cardio.png" alt="Musculacion">
+                    <div class="pie-galeria">MUSCULACION</div>
+                </div>
+                 <div class="elemento-galeria">
+                    <img src="./img/musculacion2.png" alt="Musculacion">
+                </div>
+                  <div class="elemento-galeria">
+                    <img src="./img/musculacion3.png" alt="Musculacion">
+                </div>
+                   <div class="elemento-galeria">
+                    <img src="./img/musculacion4.png" alt="Musculacion">
+                </div>
+            </div>
+
+            <!-- Flecha Derecha -->
+            <button class="flecha-btn derecha" id="flechaDer">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section id="opiniones" class="padding-seccion testimonios">
+        <div class="contenedor">
+            <div class="texto-centro revelar-al-scroll">
+                <span class="subtitle">¿QUE OPINAN NUESTROS SOCIOS?</span>
+                <h2>OPINIONES <span style="color: var(--primary);">REALES</span></h2>
+            </div>
+            <div class="grid-testimonios">
+                <!-- TARJETA 1 -->
+                <a href="https://www.google.com/search?sa=X&sca_esv=b7032cbdab6171c7&sxsrf=AE3TifP3N1-GN8_pU4yb3vLksSorQaVinw:1764142390160&q=DIAMOND+GYM+Rese%C3%B1as&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MzaztDQwNjS2NDMwNTQysTC02MDI-IpRxMXT0dffz0XBPdJXISi1OPXwxsTiRaxYhQECWIDWSAAAAA&rldimm=6369903139605124818&tbm=lcl&hl=es-ES&ved=2ahUKEwjbtf7Dpo-RAxXXhf0HHQQwE0AQ9fQKegQISxAF&biw=1920&bih=945&dpr=1#lkt=LocalPoiReviews" target="_blank" class="tarjeta-testimonio revelar-al-scroll">
+                    <div class="icono-comilla">”</div>
+                    <div class="estrellas">★★★★☆</div>
+                    <p class="texto-resena">Gimnasio bastante completo y con una maquinaria muy decente. El ambiente es bueno, con buen rollo y amabilidad entre todos los usuarios. El personal también es bastante agradable."</p>
+                    <div class="nombre-autor">S.G</div>
+                </a>
+
+                <!-- TARJETA 2 -->
+                <a href="https://www.google.com/search?sa=X&sca_esv=b7032cbdab6171c7&sxsrf=AE3TifP3N1-GN8_pU4yb3vLksSorQaVinw:1764142390160&q=DIAMOND+GYM+Rese%C3%B1as&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MzaztDQwNjS2NDMwNTQysTC02MDI-IpRxMXT0dffz0XBPdJXISi1OPXwxsTiRaxYhQECWIDWSAAAAA&rldimm=6369903139605124818&tbm=lcl&hl=es-ES&ved=2ahUKEwjbtf7Dpo-RAxXXhf0HHQQwE0AQ9fQKegQISxAF&biw=1920&bih=945&dpr=1#lkt=LocalPoiReviews" target="_blank" class="tarjeta-testimonio revelar-al-scroll">
+                    <div class="icono-comilla">”</div>
+                    <div class="estrellas">★★★★★</div>
+                    <p class="texto-resena">"Estupendo gimnasio en linares .Te recepcionan fantástico. El pase de un día es muy económico. El ambiente de música es cañero que para mí gusto es un acierto a la hora de entrenar fuerte. Muy completo de máquinas y muy limpio. Un lugar donde volver. ❤️💪🏻"</p>
+                    <div class="nombre-autor">Yaya Fitness 77</div>
+                </a>
+
+                <!-- TARJETA 3 -->
+                <a href="https://www.google.com/search?sa=X&sca_esv=b7032cbdab6171c7&sxsrf=AE3TifP3N1-GN8_pU4yb3vLksSorQaVinw:1764142390160&q=DIAMOND+GYM+Rese%C3%B1as&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MzaztDQwNjS2NDMwNTQysTC02MDI-IpRxMXT0dffz0XBPdJXISi1OPXwxsTiRaxYhQECWIDWSAAAAA&rldimm=6369903139605124818&tbm=lcl&hl=es-ES&ved=2ahUKEwjbtf7Dpo-RAxXXhf0HHQQwE0AQ9fQKegQISxAF&biw=1920&bih=945&dpr=1#lkt=LocalPoiReviews" target="_blank" class="tarjeta-testimonio revelar-al-scroll">
+                    <div class="icono-comilla">”</div>
+                    <div class="estrellas">★★★★★</div>
+                    <p class="texto-resena">"El mejor gym de Linares sin duda. Precios competitivos para la calidad que ofrecen. ¡Recomendadísimo!"</p>
+                    <div class="nombre-autor">KEKE.</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- PRECIOS -->
+    <section id="precios" class="padding-seccion">
+        <div class="contenedor revelar-al-scroll">
+            <div class="texto-centro">
+                <span class="subtitle">Invierte en ti</span>
+                <h2>TARIFAS <span style="color: var(--primary);">OFICIALES</span></h2>
+            </div>
+
+            <h3 style="margin-top: 40px; border-left: 4px solid var(--primary); padding-left: 15px;">Bonos & Tarifas</h3>
+            
+            <div class="grid-precios">
+                <div class="tarjeta-precio">
+                    <h3>1 Semana</h3>
+                    <div class="precio">15€</div>
+                    <p class="text-gray">7 días consecutivos.</p>
+                </div>
+                <div class="tarjeta-precio">
+                    <h3>Bono 12 Días</h3>
+                    <div class="precio">27€</div>
+                    <p class="text-gray">Caducidad 2 meses.</p>
+                    <small style="color: var(--primary);">¡Muy popular!</small>
+                </div>
+                <div class="tarjeta-precio">
+                    <h3>Mensual</h3>
+                    <div class="precio">37€</div>
+                    <p class="text-gray">Pago mes a mes sin ataduras.</p>
+                </div>
+            </div>
+
+            <div class="grid-precios">
+                <div class="tarjeta-precio destacado">
+                    <h3>Trimestral</h3>
+                    <div class="precio">102€</div>
+                    <p class="text-gray">Ahorro garantizado.</p>
+                </div>
+                <!-- Aquí hemos añadido el Semestral -->
+                <div class="tarjeta-precio">
+                    <h3>Semestral</h3>
+                    <div class="precio">192€</div>
+                    <p class="text-gray">Sale a 32€ / mes.</p>
+                </div>
+                <div class="tarjeta-precio">
+                    <h3>Anual</h3>
+                    <div class="precio">360€</div>
+                    <p class="text-gray">Sale a 30€ / mes.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="padding-seccion" style="background: #151515;">
+        <div class="contenedor revelar-al-scroll" style="max-width: 800px;">
+            <div class="texto-centro" style="margin-bottom: 40px;">
+                <h2>PREGUNTAS <span style="color: var(--primary);">FRECUENTES</span></h2>
+            </div>
+
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Es obligatorio llevar toalla y agua? <span>+</span></div>
+                <div class="respuesta-frecuente">Sí. Por higiene y seguridad, es obligatorio traer una toalla. Se recomienda llevar agua fría para hidratarte durante el entrenamiento, aunque también puedes adquirir botellas de agua en las instalaciones del gimnasio..</div>
+            </div>
+
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Puedo ir si soy principiante? <span>+</span></div>
+                <div class="respuesta-frecuente">¡Claro que sí! En Diamond Gym damos la bienvenida a todos los niveles, desde principiantes hasta avanzados.</div>
+            </div>
+
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Ofrecen rutinas personalizadas? <span>+</span></div>
+                <div class="respuesta-frecuente">Sí, nuestros entrenadores pueden diseñar una rutina adaptada a tus objetivos, condición física y horario.</div>
+            </div>
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Dónde puedo consultar los precios?<span>+</span></div>
+                <div class="respuesta-frecuente">
+                    Los precios están disponibles directamente en la recepción del gimnasio.<br>
+                    <strong>Bonos:</strong> 1 día: 4€ | 1 semana: 15€ | 12 días: 27€<br>
+                    <strong>Mensualidades:</strong> Mensual: 37€ | Trimestral: 102€ | Anual: 360€
+                </div>
+            </div>
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Cómo puedo llegar al gimnasio? <span>+</span></div>
+                <div class="respuesta-frecuente">Puedes encontrarnos en Calle Úbeda, 23700 Linares (Jaén). Busca "Diamond Gym Linares" en Google Maps.</div>
+            </div>
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Tienen vestuarios, duchas y taquillas disponibles? <span>+</span></div>
+                <div class="respuesta-frecuente">Sí, contamos con <strong>vestuarios, duchas y taquillas disponibles</strong> justo a la entrada del gimnasio y también en cada una de los servicios.</div>
+            </div>
+                 <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Hay tienda o suplementos deportivos disponibles? <span>+</span></div>
+                <div class="respuesta-frecuente">Sí, en la <strong>recepción</strong> encontrarás una  <strong>tienda con suplementos deportivos</strong> de todo tipo, ideales para complementar tu rutina.</div>
+            </div>
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Tienen estacionamiento o convenio con aparcamiento cercano?<span>+</span></div>
+                <div class="respuesta-frecuente">Sí, el gimnasio cuenta con un <strong>amplio aparcamiento ubicado en la zona de la entrada</strong>, para que puedas acceder cómodamente.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="contenedor revelar-al-scroll">
+            <div class="grid-pie">
+                <div class="columna-pie">
+                    <div><h3>Ubicación en tiempo real</h3><span></span></div>
+                    <p>Encuentra DIAMOND GYM en Linares, Jaén. ¡Tu gimnasio de confianza te espera!</p>
+                </div>
+                <div class="columna-pie">
+                    <h4>Visítanos</h4>
+                    <p style="color: #fff;">C. Úbeda, 23700<br>Linares, Jaén</p>
+                </div>
+            </div>
+
+            <div class="contenedor-mapa">
+                <iframe width="100%" height="100%" 
+                    style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);"
+                    loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://maps.google.com/maps?q=Diamond+Gym+Linares&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                </iframe>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="pie-secundario">
+        <div class="contenedor-pie2">
+            <div class="seccion-pie2">
+                <h3>DiamondGym</h3>
+                <p>© 2025 Todos los derechos reservados.</p>
+            </div>
+            <div class="seccion-pie2">
+                <h4>Diamond Assistant</h4>
+                <p>Powered by ChaTling.AI</p>
+            </div>
+            <div class="seccion-pie2">
+                <h4>Legales</h4>
+                <a href="./aviso-legal.html" class="enlace-pie">Política de Privacidad</a><br>
+                <a href="./aviso-legal.html" class="enlace-pie">Aviso Legal</a>
+            </div>
+            <div class="seccion-pie2">
+                <h4>Contacto</h4>
+                <a href="mailto:info@diamondgymlinares.es" class="enlace-pie">info@diamondgymlinares.es</a>
+                <div class="redes-container">
+                    <a href="https://www.instagram.com/diamondgym_linares/?hl=es" target="_blank" class="link-insta">
+                        <img src="./img/insta.png" alt="Instagram Diamond Gym">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="texto-centro" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; color: #555; font-size: 0.8rem;">
+            &copy; 2026 Diamond Gym. Diseñado por Saúl Expósito Jiménez.
+        </div>
+    </div>
+
+   
+    <!-- JS GLOBAL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+
+
+            /* --- MENU MÓVIL --- */
+            const hamburger = document.getElementById('hamburger-btn');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (hamburger) hamburger.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                });
+            });
+
+            /* --- ANIMACIONES SCROLL --- */
+            const scrollElements = document.querySelectorAll('.revelar-al-scroll');
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
+            };
+            const displayScrollElement = (element) => {
+                element.classList.add('is-visible');
+            };
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            handleScrollAnimation();
+
+            /* --- GALERIA DESLIZABLE --- */
+            const galeria = document.querySelector('.galeria-desplazable');
+            const btnIzq = document.getElementById('flechaIzq');
+            const btnDer = document.getElementById('flechaDer');
+            const scrollAmount = 370; 
+
+            if(btnDer && btnIzq && galeria) {
+                btnDer.addEventListener('click', () => {
+                    galeria.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+                btnIzq.addEventListener('click', () => {
+                    galeria.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+        });
+
+        /* --- LOGICA DEL CURSOR --- */
+
+
+        
+            //  CURSOR
+const cursor = document.getElementById('cursor');
+// Selecciona todo lo que sea clickeable para animar el cursor
+const hoverTargets = document.querySelectorAll('.hover-target, a, button, input, textarea');
+
+// Mueve la bolita siguiendo al ratón
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+// Efecto al hacer click (se hace pequeño)
+document.addEventListener('mousedown', () => cursor.style.transform = "translate(-50%, -50%) scale(0.8)");
+document.addEventListener('mouseup', () => cursor.style.transform = "translate(-50%, -50%) scale(1)");
+
+// Efecto al pasar por encima de enlaces (se hace grande)
+hoverTargets.forEach(target => {
+    target.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    target.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+});
+    </script>
+</body>
+</html>
