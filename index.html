@@ -95,6 +95,117 @@
     <!-- Hoja de estilos personalizada -->
     <link rel="stylesheet" href="./css/style.css">
 
+    <!-- ESTILOS SECCIÓN BOXEO (nuevo: no modifica style.css) -->
+    <style>
+        .seccion-boxeo {
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seccion-boxeo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .texto-boxeo {
+            max-width: 800px;
+            margin: 30px auto 0;
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .titulo-horario-boxeo {
+            margin-top: 50px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .grid-horario-boxeo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .tarjeta-horario {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-left: 4px solid var(--primary);
+            padding: 28px 20px;
+            transition: var(--transition);
+        }
+
+        .tarjeta-horario:hover {
+            border-color: var(--primary);
+        }
+
+        .horario-etiqueta {
+            display: block;
+            color: var(--primary);
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .horario-hora {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .viernes-boxeo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 30px 35px;
+            background: #2a2a2a;
+            border: 1px solid var(--primary);
+        }
+
+        .viernes-boxeo h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .viernes-boxeo .horario-hora {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .texto-boxeo {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .viernes-boxeo {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px 20px;
+            }
+
+            .viernes-boxeo .horario-hora {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
     <script> window.chtlConfig = { chatbotId: "6211612239" } </script>
     <script async data-id="6211612239" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
 
@@ -391,6 +502,89 @@
         </div>
     </section>
 
+    <!-- ============================================ -->
+    <!-- BOXEO (NUEVO)                                -->
+    <!-- ============================================ -->
+    <section id="boxeo" class="padding-seccion seccion-boxeo">
+        <div class="contenedor">
+            <div class="texto-centro revelar-al-scroll">
+                <span class="subtitle">MMA INVICTO</span>
+                <h2>CLASES DE <span style="color: var(--primary);">BOXEO</span></h2>
+            </div>
+
+            <p class="texto-boxeo revelar-al-scroll">
+                En Diamond Gym se dan clases de boxeo de la mano de <strong>MMA Invicto</strong>. Técnica, disciplina y trabajo duro en un ambiente que te empuja a dar lo mejor de ti en cada sesión. Hay grupos para adultos y para niños, con varios horarios a lo largo del día para que puedas encajar el boxeo en tu rutina.
+            </p>
+
+            <h3 class="titulo-horario-boxeo revelar-al-scroll">Horario de clases</h3>
+
+            <div class="grid-horario-boxeo revelar-al-scroll">
+                <div class="tarjeta-horario">
+                    <span class="horario-etiqueta">Boxeo adultos</span>
+                    <div class="horario-hora">11:00 – 12:30</div>
+                </div>
+                <div class="tarjeta-horario">
+                    <span class="horario-etiqueta">Boxeo niños</span>
+                    <div class="horario-hora">18:00 – 19:00</div>
+                </div>
+                <div class="tarjeta-horario">
+                    <span class="horario-etiqueta">Boxeo adultos</span>
+                    <div class="horario-hora">19:00 – 20:30</div>
+                </div>
+                <div class="tarjeta-horario">
+                    <span class="horario-etiqueta">Boxeo adultos</span>
+                    <div class="horario-hora">21:00 – 22:00</div>
+                </div>
+            </div>
+
+            <div class="viernes-boxeo revelar-al-scroll">
+                <div>
+                    <span class="subtitle">Todos los viernes</span>
+                    <h3>Sparring / Entreno libre</h3>
+                </div>
+                <div class="horario-hora">19:00 – 21:00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA BOXEO (NUEVO) -->
+    <section id="boxeo-galeria" class="padding-seccion seccion-galeria">
+        <div class="contenedor texto-centro revelar-al-scroll" style="margin-bottom: 40px;">
+            <span class="subtitle">EN ACCIÓN</span>
+            <h2>GALERÍA DE <span style="color: var(--primary);">BOXEO</span></h2>
+            <img src="./img/desliza.gif" alt="" style="display: block; margin: 0 auto; width: 50px;">
+        </div>
+        <div class="contenedor-slider-wrapper">
+            <!-- Flecha Izquierda -->
+            <button class="flecha-btn izquierda" id="flechaIzqBoxeo" aria-label="Anterior">&#10094;</button>
+
+            <!-- INICIO DE LA ZONA QUE SE MUEVE -->
+            <div class="galeria-desplazable revelar-al-scroll" id="galeriaBoxeo">
+                <div class="elemento-galeria">
+                    <img src="./img/boxeofoto1.png" alt="Boxeo en Diamond Gym 1" loading="lazy">
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/boxeofoto2.png" alt="Boxeo en Diamond Gym 2" loading="lazy">
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/boxeofoto3.png" alt="Boxeo en Diamond Gym 3" loading="lazy">
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/boxeofoto4.png" alt="Boxeo en Diamond Gym 4" loading="lazy">
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/boxeofoto5.png" alt="Boxeo en Diamond Gym 5" loading="lazy">
+                </div>
+                <div class="elemento-galeria">
+                    <img src="./img/boxeofoto6.png" alt="Boxeo en Diamond Gym 6" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Flecha Derecha -->
+            <button class="flecha-btn derecha" id="flechaDerBoxeo" aria-label="Siguiente">&#10095;</button>
+        </div>
+    </section>
+
     <!-- OPINIONES -->
     <section id="opiniones" class="padding-seccion testimonios">
         <div class="contenedor">
@@ -521,6 +715,19 @@
             <div class="item-pregunta" onclick="this.classList.toggle('active')">
                 <div class="pregunta-frecuente">¿Tienen estacionamiento o convenio con aparcamiento cercano?<span>+</span></div>
                 <div class="respuesta-frecuente">Sí, el gimnasio cuenta con un <strong>amplio aparcamiento ubicado en la zona de la entrada</strong>, para que puedas acceder cómodamente.</div>
+            </div>
+
+            <!-- PREGUNTAS BOXEO (NUEVAS) -->
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿A qué edad pueden boxear los niños? <span>+</span></div>
+                <div class="respuesta-frecuente">Las clases de boxeo para niños están dirigidas a <strong>menores de 15 años</strong>.</div>
+            </div>
+            <div class="item-pregunta" onclick="this.classList.toggle('active')">
+                <div class="pregunta-frecuente">¿Cuánto cuestan las clases de boxeo? <span>+</span></div>
+                <div class="respuesta-frecuente">
+                    <strong>Boxeo niños:</strong> 40€<br>
+                    <strong>Boxeo adultos y femenino:</strong> 50€
+                </div>
             </div>
         </div>
     </section>
@@ -667,6 +874,25 @@ hoverTargets.forEach(target => {
     target.addEventListener('mouseenter', () => cursor.classList.add('active'));
     target.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 });
+    </script>
+
+    <!-- JS CARRUSEL BOXEO (NUEVO) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galeriaBoxeo = document.getElementById('galeriaBoxeo');
+            const btnIzqBoxeo = document.getElementById('flechaIzqBoxeo');
+            const btnDerBoxeo = document.getElementById('flechaDerBoxeo');
+            const scrollAmountBoxeo = 370;
+
+            if (btnDerBoxeo && btnIzqBoxeo && galeriaBoxeo) {
+                btnDerBoxeo.addEventListener('click', () => {
+                    galeriaBoxeo.scrollBy({ left: scrollAmountBoxeo, behavior: 'smooth' });
+                });
+                btnIzqBoxeo.addEventListener('click', () => {
+                    galeriaBoxeo.scrollBy({ left: -scrollAmountBoxeo, behavior: 'smooth' });
+                });
+            }
+        });
     </script>
 </body>
 </html>
